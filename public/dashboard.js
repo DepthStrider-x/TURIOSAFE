@@ -1,6 +1,6 @@
 // TODO: Replace with your Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCT8qO5F0f4nVPY9HlwfL1rJcPhCKJBU4Y",
+    apiKey: "You API KEY",
     authDomain: "girl-safety-74247.firebaseapp.com",
     projectId: "girl-safety-74247",
     storageBucket: "girl-safety-74247.firebasestorage.app",
