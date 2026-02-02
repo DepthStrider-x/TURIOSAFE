@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Trips - TOURIOSAFE</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="tourist-safety.css">
+    <script>
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <style>
+        .no-trips-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .no-trips-title {
+            font-size: 3.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .no-trips-sub {
+            font-size: 1.2rem;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="navbar-brand">
+                <img src="images/logo.png" class="logo">
+                <span>TOURIOSAFE</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="https://www.google.com/maps" target="_blank" rel="noopener">Map</a></li>
+                <li><a href="My-Trips.html" class="active">My Trips</a></li>
+                <li><a href="report-incident.html">Report Incident</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <button id="sosBtn" class="sos-button">🚨 SOS</button>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="no-trips-container">
+            <h1 class="no-trips-title">No trip found!</h1>
+            <p class="no-trips-sub">Your upcoming adventures will appear here once you start planning.</p>
+            <div style="margin-top: 30px;">
+                <a href="index.html" class="girl-dashboard-btn"
+                    style="text-decoration: none; display: inline-block;">Plan Now</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 TourioSafe. All rights reserved.</p>
+            <p>Follow us on:
+                <a href="#">Facebook</a> |
+                <a href="#">Instagram</a> |
+                <a href="#">Twitter</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+
+</html>

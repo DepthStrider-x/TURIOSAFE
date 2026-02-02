@@ -6,9 +6,6 @@ sqlite3.exe
 uploads/
 AUTOCOMPLETE_IMPLEMENTATION.md
 MUZAFFARNAGAR_ENHANCEMENT.md
-public/style2.css
-public/style3.css
-public/travel-autocomplete.js
 public/test-autocomplete.js
 public/autocomplete-demo.html
 public/test-muzaffarnagar.html
