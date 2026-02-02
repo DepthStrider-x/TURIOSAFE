@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report Incident - TOURIOSAFE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="report-page">
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <a href="#" class="navbar-brand">
+        <img src="images/logo.png"class="logo">
+        <span>TOURIOSAFE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Map</a></li>
+        <li><a href="#">My Trips</a></li>
+        <li><a href="report.html">Report Incident</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><button id="sosBtn" class="sos-button" data-tooltip="&#8226; Sends an immediate SOS alert to local authorities
+&#8226; Notifies your designated emergency contacts via email
+&#8226; Shares your precise real-time location
+&#8226; Helps ensure rapid assistance in case of emergency">🚨 SOS</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- REPORT INCIDENT FORM -->
+  <section class="report-section">
+    <h2>Report an Accident or Incident</h2>
+    <form id="reportForm" enctype="multipart/form-data">
+      <input id="name" name="name" placeholder="Your Name" required />
+      <input id="location" name="location" placeholder="Location of Accident" required />
+      <input id="type" name="type" placeholder="Type of Accident (Car, Fire, etc.)" required />
+      <textarea id="description" name="description" placeholder="Description" required></textarea>
+      <input type="file" id="attachment" name="attachment" accept="image/*" />
+      <button type="submit">Submit</button>
+    </form>
+    
+    <ul id="reportsList"></ul>
+    
+    <script>
+    document.getElementById('reportForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const token = localStorage.getItem('token');
+  if (!token) return alert('Please login first');
+
+  const formData = new FormData(document.getElementById('reportForm'));
+
+  // optional: geolocation
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(pos => {
+      formData.append('lat', pos.coords.latitude);
+      formData.append('lon', pos.coords.longitude);
+      submitReport(formData);
+    }, () => submitReport(formData));
+  } else {
+    submitReport(formData);
+  }
+
+  async function submitReport(formData) {
+    const res = await fetch('/report', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + token },
+      body: formData
+    });
+    const data = await res.json();
+    if (data.success) {
+      alert('Report submitted');
+      loadReports();
+    } else {
+      alert('Error: ' + (data.error || 'unknown'));
+    }
+  }
+});
+
+async function loadReports() {
+  const token = localStorage.getItem('token');
+  const res = await fetch('/reports', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  });
+  const data = await res.json();
+  if (data.success) {
+    const list = document.getElementById('reportsList');
+    list.innerHTML = data.reports.map(r =>
+      `<li>
+        <b>${r.type}</b> at ${r.location} by ${r.reporter || 'anonymous'}<br/>
+        ${r.description}<br/>
+        ${r.attachment ? `<img src="${r.attachment}" width="150"/>` : ''}
+        <small>${r.created_at}</small>
+      </li>`
+    ).join('');
+  }
+}
+loadReports();
+    </script>

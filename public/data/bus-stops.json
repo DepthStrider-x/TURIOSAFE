@@ -1,0 +1,384 @@
+[
+  {
+    "id": "delhi-isbt",
+    "name": "Kashmere Gate ISBT",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "area": "Kashmere Gate",
+    "type": "major_terminal"
+  },
+  {
+    "id": "delhi-anand-vihar",
+    "name": "Anand Vihar Bus Terminal",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "area": "Anand Vihar",
+    "type": "major_terminal"
+  },
+  {
+    "id": "mumbai-cst",
+    "name": "Mumbai Central Bus Station",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "area": "Mumbai Central",
+    "type": "major_terminal"
+  },
+  {
+    "id": "bangalore-majestic",
+    "name": "Kempegowda Bus Station (Majestic)",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "area": "Majestic",
+    "type": "major_terminal"
+  },
+  {
+    "id": "chennai-cmbt",
+    "name": "Chennai Mofussil Bus Terminus",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "area": "Koyambedu",
+    "type": "major_terminal"
+  },
+  {
+    "id": "kolkata-esplanade",
+    "name": "Esplanade Bus Terminal",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "area": "Esplanade",
+    "type": "major_terminal"
+  },
+  {
+    "id": "hyderabad-mgbs",
+    "name": "Mahatma Gandhi Bus Station",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "area": "Imlibun",
+    "type": "major_terminal"
+  },
+  {
+    "id": "ahmedabad-geeta-mandir",
+    "name": "Geeta Mandir Bus Stand",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "area": "Geeta Mandir",
+    "type": "major_terminal"
+  },
+  {
+    "id": "pune-shivajinagar",
+    "name": "Shivajinagar Bus Stand",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "area": "Shivajinagar",
+    "type": "major_terminal"
+  },
+  {
+    "id": "jaipur-sindhi-camp",
+    "name": "Sindhi Camp Bus Stand",
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "area": "Sindhi Camp",
+    "type": "major_terminal"
+  },
+  {
+    "id": "goa-panaji",
+    "name": "Panaji Bus Stand",
+    "city": "Panaji",
+    "state": "Goa",
+    "area": "Panaji",
+    "type": "major_terminal"
+  },
+  {
+    "id": "kochi-vytilla",
+    "name": "Vytilla Bus Terminal",
+    "city": "Kochi",
+    "state": "Kerala",
+    "area": "Vytilla",
+    "type": "major_terminal"
+  },
+  {
+    "id": "lucknow-alambagh",
+    "name": "Alambagh Bus Station",
+    "city": "Lucknow",
+    "state": "Uttar Pradesh",
+    "area": "Alambagh",
+    "type": "major_terminal"
+  },
+  {
+    "id": "chandigarh-sector-17",
+    "name": "Sector 17 Bus Stand",
+    "city": "Chandigarh",
+    "state": "Chandigarh",
+    "area": "Sector 17",
+    "type": "major_terminal"
+  },
+  {
+    "id": "nagpur-ganeshpeth",
+    "name": "Ganeshpeth Bus Stand",
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "area": "Ganeshpeth",
+    "type": "major_terminal"
+  },
+  {
+    "id": "siliguri-tenzing-norgay",
+    "name": "Tenzing Norgay Bus Terminal",
+    "city": "Siliguri",
+    "state": "West Bengal",
+    "area": "Sevok Road",
+    "type": "major_terminal"
+  },
+  {
+    "id": "varanasi-cantt",
+    "name": "Varanasi Cantt Bus Stand",
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "area": "Cantonment",
+    "type": "major_terminal"
+  },
+  {
+    "id": "guwahati-isbt",
+    "name": "Guwahati ISBT",
+    "city": "Guwahati",
+    "state": "Assam",
+    "area": "Betkuchi",
+    "type": "major_terminal"
+  },
+  {
+    "id": "jammu-bc-road",
+    "name": "BC Road Bus Stand",
+    "city": "Jammu",
+    "state": "Jammu and Kashmir",
+    "area": "BC Road",
+    "type": "major_terminal"
+  },
+  {
+    "id": "madurai-mattuthavani",
+    "name": "Mattuthavani Bus Terminal",
+    "city": "Madurai",
+    "state": "Tamil Nadu",
+    "area": "Mattuthavani",
+    "type": "major_terminal"
+  },
+  {
+    "id": "vijayawada-pandit-nehru",
+    "name": "Pandit Nehru Bus Station",
+    "city": "Vijayawada",
+    "state": "Andhra Pradesh",
+    "area": "Ring Road",
+    "type": "major_terminal"
+  },
+  {
+    "id": "coimbatore-gandhipuram",
+    "name": "Gandhipuram Bus Terminal",
+    "city": "Coimbatore",
+    "state": "Tamil Nadu",
+    "area": "Gandhipuram",
+    "type": "major_terminal"
+  },
+  {
+    "id": "bhopal-nadra",
+    "name": "Nadra Bus Stand",
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "area": "Nadra",
+    "type": "major_terminal"
+  },
+  {
+    "id": "raipur-dandhi-station",
+    "name": "Dandhi Bus Station",
+    "city": "Raipur",
+    "state": "Chhattisgarh",
+    "area": "Dandhi",
+    "type": "major_terminal"
+  },
+  {
+    "id": "ranchi-main",
+    "name": "Ranchi Main Bus Stand",
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "area": "Main Road",
+    "type": "major_terminal"
+  },
+  {
+    "id": "thiruvananthapuram-thampanoor",
+    "name": "Thampanoor Bus Station",
+    "city": "Thiruvananthapuram",
+    "state": "Kerala",
+    "area": "Thampanoor",
+    "type": "major_terminal"
+  },
+  {
+    "id": "patna-mithapur",
+    "name": "Mithapur Bus Terminal",
+    "city": "Patna",
+    "state": "Bihar",
+    "area": "Mithapur",
+    "type": "major_terminal"
+  },
+  {
+    "id": "rajkot-st-stand",
+    "name": "ST Bus Stand",
+    "city": "Rajkot",
+    "state": "Gujarat",
+    "area": "ST Stand",
+    "type": "major_terminal"
+  },
+  {
+    "id": "udaipur-rana-pratap-nagar",
+    "name": "Rana Pratap Nagar Bus Stand",
+    "city": "Udaipur",
+    "state": "Rajasthan",
+    "area": "Rana Pratap Nagar",
+    "type": "major_terminal"
+  },
+  {
+    "id": "jodhpur-rai-ka-bagh",
+    "name": "Rai Ka Bagh Bus Stand",
+    "city": "Jodhpur",
+    "state": "Rajasthan",
+    "area": "Rai Ka Bagh",
+    "type": "major_terminal"
+  },
+  {
+    "id": "amritsar-isbt",
+    "name": "Amritsar ISBT",
+    "city": "Amritsar",
+    "state": "Punjab",
+    "area": "GT Road",
+    "type": "major_terminal"
+  },
+  {
+    "id": "surat-udhna-darwaja",
+    "name": "Udhna Darwaja Bus Stand",
+    "city": "Surat",
+    "state": "Gujarat",
+    "area": "Udhna Darwaja",
+    "type": "major_terminal"
+  },
+  {
+    "id": "indore-sarwate",
+    "name": "Sarwate Bus Stand",
+    "city": "Indore",
+    "state": "Madhya Pradesh",
+    "area": "Sarwate",
+    "type": "major_terminal"
+  },
+  {
+    "id": "kanpur-central",
+    "name": "Kanpur Central Bus Station",
+    "city": "Kanpur",
+    "state": "Uttar Pradesh",
+    "area": "Central",
+    "type": "major_terminal"
+  },
+  {
+    "id": "agra-idgah",
+    "name": "Idgah Bus Stand",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "area": "Idgah",
+    "type": "major_terminal",
+    "routes": ["Delhi", "Jaipur", "Gwalior", "Mathura"],
+    "facilities": ["Waiting Hall", "Food Court", "ATM", "Parking"],
+    "operators": ["UPSRTC", "Rajasthan Roadways", "Private"]
+  },
+  {
+    "id": "muzaffarnagar-bus-stand",
+    "name": "Muzaffarnagar Bus Stand",
+    "city": "Muzaffarnagar",
+    "state": "Uttar Pradesh",
+    "area": "Civil Lines",
+    "type": "major_terminal",
+    "routes": ["Delhi", "Saharanpur", "Meerut", "Roorkee", "Dehradun", "Haridwar"],
+    "facilities": ["Waiting Hall", "Food Stalls", "ATM", "Parking", "Restrooms"],
+    "operators": ["UPSRTC", "Uttarakhand Roadways", "Private"]
+  },
+  {
+    "id": "saharanpur-bus-stand",
+    "name": "Saharanpur Bus Terminal",
+    "city": "Saharanpur",
+    "state": "Uttar Pradesh",
+    "area": "Railway Road",
+    "type": "major_terminal",
+    "routes": ["Delhi", "Muzaffarnagar", "Dehradun", "Haridwar", "Rishikesh", "Ambala"],
+    "facilities": ["Waiting Hall", "Food Court", "ATM", "Parking", "Medical Room"],
+    "operators": ["UPSRTC", "Uttarakhand Roadways", "Haryana Roadways"]
+  },
+  {
+    "id": "meerut-bus-terminal",
+    "name": "Meerut ISBT",
+    "city": "Meerut",
+    "state": "Uttar Pradesh",
+    "area": "Partapur",
+    "type": "major_terminal",
+    "routes": ["Delhi", "Ghaziabad", "Muzaffarnagar", "Saharanpur", "Moradabad"],
+    "facilities": ["Waiting Hall", "Food Court", "ATM", "Parking", "Medical Room", "Information Desk"],
+    "operators": ["UPSRTC", "Delhi Transport Corporation", "Private"]
+  },
+  {
+    "id": "ghaziabad-isbt",
+    "name": "Ghaziabad ISBT",
+    "city": "Ghaziabad",
+    "state": "Uttar Pradesh",
+    "area": "Kaushambi",
+    "type": "major_terminal",
+    "routes": ["Delhi", "Meerut", "Muzaffarnagar", "Moradabad", "Bareilly"],
+    "facilities": ["Waiting Hall", "Food Court", "ATM", "Parking", "WiFi", "Medical Room"],
+    "operators": ["UPSRTC", "Delhi Transport Corporation", "Private"]
+  },
+  {
+    "id": "roorkee-bus-stand",
+    "name": "Roorkee Bus Stand",
+    "city": "Roorkee",
+    "state": "Uttarakhand",
+    "area": "Civil Lines",
+    "type": "major_terminal",
+    "routes": ["Delhi", "Muzaffarnagar", "Saharanpur", "Dehradun", "Haridwar"],
+    "facilities": ["Waiting Hall", "Food Stalls", "ATM", "Parking"],
+    "operators": ["Uttarakhand Roadways", "UPSRTC", "Private"]
+  },
+  {
+    "id": "haridwar-bus-stand",
+    "name": "Haridwar Bus Terminal",
+    "city": "Haridwar",
+    "state": "Uttarakhand",
+    "area": "Railway Road",
+    "type": "major_terminal",
+    "routes": ["Delhi", "Mumbai", "Chandigarh", "Muzaffarnagar", "Rishikesh", "Badrinath"],
+    "facilities": ["Waiting Hall", "Food Court", "ATM", "Parking", "Tourist Information", "Medical Room"],
+    "operators": ["Uttarakhand Roadways", "UPSRTC", "Punjab Roadways", "Private"]
+  },
+  {
+    "id": "dehradun-isbt",
+    "name": "Dehradun ISBT",
+    "city": "Dehradun",
+    "state": "Uttarakhand",
+    "area": "Clement Town",
+    "type": "major_terminal",
+    "routes": ["Delhi", "Mumbai", "Chandigarh", "Muzaffarnagar", "Mussoorie", "Nainital"],
+    "facilities": ["Waiting Hall", "Food Court", "ATM", "Parking", "WiFi", "Tourist Information"],
+    "operators": ["Uttarakhand Roadways", "UPSRTC", "Private"]
+  },
+  {
+    "id": "moradabad-bus-stand",
+    "name": "Moradabad Bus Terminal",
+    "city": "Moradabad",
+    "state": "Uttar Pradesh",
+    "area": "Budh Bazar",
+    "type": "major_terminal",
+    "routes": ["Delhi", "Bareilly", "Rampur", "Muzaffarnagar", "Lucknow"],
+    "facilities": ["Waiting Hall", "Food Court", "ATM", "Parking", "Medical Room"],
+    "operators": ["UPSRTC", "Private"]
+  },
+  {
+    "id": "bareilly-bus-terminal",
+    "name": "Bareilly Bus Terminal",
+    "city": "Bareilly",
+    "state": "Uttar Pradesh",
+    "area": "Civil Lines",
+    "type": "major_terminal",
+    "routes": ["Delhi", "Lucknow", "Moradabad", "Nainital", "Muzaffarnagar"],
+    "facilities": ["Waiting Hall", "Food Court", "ATM", "Parking"],
+    "operators": ["UPSRTC", "Uttarakhand Roadways", "Private"]
+  }
+]

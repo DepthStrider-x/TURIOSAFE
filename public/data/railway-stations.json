@@ -1,0 +1,438 @@
+[
+  {
+    "id": "NDLS",
+    "name": "New Delhi Railway Station",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "station_code": "NDLS",
+    "zone": "Northern Railway",
+    "type": "major"
+  },
+  {
+    "id": "CSMT",
+    "name": "Chhatrapati Shivaji Maharaj Terminus",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "station_code": "CSMT",
+    "zone": "Central Railway",
+    "type": "major"
+  },
+  {
+    "id": "SBC",
+    "name": "Krantivira Sangolli Rayanna (Bangalore City)",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "station_code": "SBC",
+    "zone": "South Western Railway",
+    "type": "major"
+  },
+  {
+    "id": "MAS",
+    "name": "Chennai Central",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "station_code": "MAS",
+    "zone": "Southern Railway",
+    "type": "major"
+  },
+  {
+    "id": "KOAA",
+    "name": "Kolkata Terminal (Chitpur)",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "station_code": "KOAA",
+    "zone": "Eastern Railway",
+    "type": "major"
+  },
+  {
+    "id": "SC",
+    "name": "Secunderabad Junction",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "station_code": "SC",
+    "zone": "South Central Railway",
+    "type": "major"
+  },
+  {
+    "id": "ADI",
+    "name": "Ahmedabad Junction",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "station_code": "ADI",
+    "zone": "Western Railway",
+    "type": "major"
+  },
+  {
+    "id": "ERS",
+    "name": "Ernakulam Junction",
+    "city": "Kochi",
+    "state": "Kerala",
+    "station_code": "ERS",
+    "zone": "Southern Railway",
+    "type": "major"
+  },
+  {
+    "id": "PUNE",
+    "name": "Pune Junction",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "station_code": "PUNE",
+    "zone": "Central Railway",
+    "type": "major"
+  },
+  {
+    "id": "JP",
+    "name": "Jaipur Junction",
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "station_code": "JP",
+    "zone": "North Western Railway",
+    "type": "major"
+  },
+  {
+    "id": "MAO",
+    "name": "Madgaon Junction",
+    "city": "Goa",
+    "state": "Goa",
+    "station_code": "MAO",
+    "zone": "Konkan Railway",
+    "type": "major"
+  },
+  {
+    "id": "TVC",
+    "name": "Thiruvananthapuram Central",
+    "city": "Thiruvananthapuram",
+    "state": "Kerala",
+    "station_code": "TVC",
+    "zone": "Southern Railway",
+    "type": "major"
+  },
+  {
+    "id": "LKO",
+    "name": "Lucknow Charbagh NR",
+    "city": "Lucknow",
+    "state": "Uttar Pradesh",
+    "station_code": "LKO",
+    "zone": "Northern Railway",
+    "type": "major"
+  },
+  {
+    "id": "CDG",
+    "name": "Chandigarh Railway Station",
+    "city": "Chandigarh",
+    "state": "Chandigarh",
+    "station_code": "CDG",
+    "zone": "Northern Railway",
+    "type": "major"
+  },
+  {
+    "id": "NGP",
+    "name": "Nagpur Junction",
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "station_code": "NGP",
+    "zone": "Central Railway",
+    "type": "major"
+  },
+  {
+    "id": "NJP",
+    "name": "New Jalpaiguri Junction",
+    "city": "Siliguri",
+    "state": "West Bengal",
+    "station_code": "NJP",
+    "zone": "Northeast Frontier Railway",
+    "type": "major"
+  },
+  {
+    "id": "BSB",
+    "name": "Varanasi Junction",
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "station_code": "BSB",
+    "zone": "North Eastern Railway",
+    "type": "major"
+  },
+  {
+    "id": "GHY",
+    "name": "Guwahati Railway Station",
+    "city": "Guwahati",
+    "state": "Assam",
+    "station_code": "GHY",
+    "zone": "Northeast Frontier Railway",
+    "type": "major"
+  },
+  {
+    "id": "JMU",
+    "name": "Jammu Tawi",
+    "city": "Jammu",
+    "state": "Jammu and Kashmir",
+    "station_code": "JMU",
+    "zone": "Northern Railway",
+    "type": "major"
+  },
+  {
+    "id": "MDU",
+    "name": "Madurai Junction",
+    "city": "Madurai",
+    "state": "Tamil Nadu",
+    "station_code": "MDU",
+    "zone": "Southern Railway",
+    "type": "major"
+  },
+  {
+    "id": "BZA",
+    "name": "Vijayawada Junction",
+    "city": "Vijayawada",
+    "state": "Andhra Pradesh",
+    "station_code": "BZA",
+    "zone": "South Central Railway",
+    "type": "major"
+  },
+  {
+    "id": "CBE",
+    "name": "Coimbatore Junction",
+    "city": "Coimbatore",
+    "state": "Tamil Nadu",
+    "station_code": "CBE",
+    "zone": "Southern Railway",
+    "type": "major"
+  },
+  {
+    "id": "BPL",
+    "name": "Bhopal Junction",
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "station_code": "BPL",
+    "zone": "West Central Railway",
+    "type": "major"
+  },
+  {
+    "id": "R",
+    "name": "Raipur Junction",
+    "city": "Raipur",
+    "state": "Chhattisgarh",
+    "station_code": "R",
+    "zone": "South East Central Railway",
+    "type": "major"
+  },
+  {
+    "id": "RNC",
+    "name": "Ranchi Junction",
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "station_code": "RNC",
+    "zone": "South Eastern Railway",
+    "type": "major"
+  },
+  {
+    "id": "AWB",
+    "name": "Aurangabad Railway Station",
+    "city": "Aurangabad",
+    "state": "Maharashtra",
+    "station_code": "AWB",
+    "zone": "South Central Railway",
+    "type": "major"
+  },
+  {
+    "id": "ANVT",
+    "name": "Anand Vihar Terminal",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "station_code": "ANVT",
+    "zone": "Northern Railway",
+    "type": "major"
+  },
+  {
+    "id": "HWH",
+    "name": "Howrah Junction",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "station_code": "HWH",
+    "zone": "Eastern Railway",
+    "type": "major"
+  },
+  {
+    "id": "VSKP",
+    "name": "Visakhapatnam Junction",
+    "city": "Visakhapatnam",
+    "state": "Andhra Pradesh",
+    "station_code": "VSKP",
+    "zone": "East Coast Railway",
+    "type": "major"
+  },
+  {
+    "id": "AGC",
+    "name": "Agra Cantt",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "station_code": "AGC",
+    "zone": "North Central Railway",
+    "type": "major"
+  },
+  {
+    "id": "PNBE",
+    "name": "Patna Junction",
+    "city": "Patna",
+    "state": "Bihar",
+    "station_code": "PNBE",
+    "zone": "East Central Railway",
+    "type": "major"
+  },
+  {
+    "id": "RJT",
+    "name": "Rajkot Junction",
+    "city": "Rajkot",
+    "state": "Gujarat",
+    "station_code": "RJT",
+    "zone": "Western Railway",
+    "type": "major"
+  },
+  {
+    "id": "UDZ",
+    "name": "Udaipur City",
+    "city": "Udaipur",
+    "state": "Rajasthan",
+    "station_code": "UDZ",
+    "zone": "North Western Railway",
+    "type": "major"
+  },
+  {
+    "id": "JU",
+    "name": "Jodhpur Junction",
+    "city": "Jodhpur",
+    "state": "Rajasthan",
+    "station_code": "JU",
+    "zone": "North Western Railway",
+    "type": "major"
+  },
+  {
+    "id": "ASR",
+    "name": "Amritsar Junction",
+    "city": "Amritsar",
+    "state": "Punjab",
+    "station_code": "ASR",
+    "zone": "Northern Railway",
+    "type": "major",
+    "platforms": 6,
+    "facilities": ["WiFi", "Food Court", "Waiting Room", "Parking"],
+    "elevation": 234,
+    "connectivity": ["Delhi", "Mumbai", "Kolkata", "Jammu"]
+  },
+  {
+    "id": "MOZ",
+    "name": "Muzaffarnagar Railway Station",
+    "city": "Muzaffarnagar",
+    "state": "Uttar Pradesh",
+    "station_code": "MOZ",
+    "zone": "Northern Railway",
+    "type": "major",
+    "platforms": 4,
+    "facilities": ["WiFi", "Waiting Room", "Food Stall", "Parking", "ATM"],
+    "elevation": 251,
+    "connectivity": ["Delhi", "Saharanpur", "Roorkee", "Dehradun", "Haridwar"]
+  },
+  {
+    "id": "SRE",
+    "name": "Saharanpur Junction",
+    "city": "Saharanpur",
+    "state": "Uttar Pradesh",
+    "station_code": "SRE",
+    "zone": "Northern Railway",
+    "type": "major",
+    "platforms": 5,
+    "facilities": ["WiFi", "Food Court", "Waiting Room", "Parking", "ATM", "Medical Room"],
+    "elevation": 284,
+    "connectivity": ["Delhi", "Muzaffarnagar", "Dehradun", "Ambala", "Amritsar"]
+  },
+  {
+    "id": "RK",
+    "name": "Roorkee Railway Station",
+    "city": "Roorkee",
+    "state": "Uttarakhand",
+    "station_code": "RK",
+    "zone": "Northern Railway",
+    "type": "major",
+    "platforms": 3,
+    "facilities": ["WiFi", "Waiting Room", "Food Stall", "Parking"],
+    "elevation": 268,
+    "connectivity": ["Delhi", "Muzaffarnagar", "Saharanpur", "Dehradun", "Haridwar"]
+  },
+  {
+    "id": "HW",
+    "name": "Haridwar Junction",
+    "city": "Haridwar",
+    "state": "Uttarakhand",
+    "station_code": "HW",
+    "zone": "Northern Railway",
+    "type": "major",
+    "platforms": 6,
+    "facilities": ["WiFi", "Food Court", "Waiting Room", "Parking", "ATM", "Medical Room", "Cloak Room"],
+    "elevation": 314,
+    "connectivity": ["Delhi", "Mumbai", "Kolkata", "Muzaffarnagar", "Rishikesh"]
+  },
+  {
+    "id": "DDN",
+    "name": "Dehradun Railway Station",
+    "city": "Dehradun",
+    "state": "Uttarakhand",
+    "station_code": "DDN",
+    "zone": "Northern Railway",
+    "type": "major",
+    "platforms": 4,
+    "facilities": ["WiFi", "Food Court", "Waiting Room", "Parking", "ATM", "Tourist Help Desk"],
+    "elevation": 640,
+    "connectivity": ["Delhi", "Mumbai", "Muzaffarnagar", "Saharanpur", "Haridwar"]
+  },
+  {
+    "id": "MB",
+    "name": "Moradabad Junction",
+    "city": "Moradabad",
+    "state": "Uttar Pradesh",
+    "station_code": "MB",
+    "zone": "Northern Railway",
+    "type": "major",
+    "platforms": 6,
+    "facilities": ["WiFi", "Food Court", "Waiting Room", "Parking", "ATM", "Medical Room"],
+    "elevation": 200,
+    "connectivity": ["Delhi", "Lucknow", "Bareilly", "Rampur", "Muzaffarnagar"]
+  },
+  {
+    "id": "BE",
+    "name": "Bareilly Junction",
+    "city": "Bareilly",
+    "state": "Uttar Pradesh",
+    "station_code": "BE",
+    "zone": "Northern Railway",
+    "type": "major",
+    "platforms": 5,
+    "facilities": ["WiFi", "Food Court", "Waiting Room", "Parking", "ATM"],
+    "elevation": 169,
+    "connectivity": ["Delhi", "Lucknow", "Moradabad", "Kathgodam", "Muzaffarnagar"]
+  },
+  {
+    "id": "GZB",
+    "name": "Ghaziabad Junction",
+    "city": "Ghaziabad",
+    "state": "Uttar Pradesh",
+    "station_code": "GZB",
+    "zone": "Northern Railway",
+    "type": "major",
+    "platforms": 8,
+    "facilities": ["WiFi", "Food Court", "Waiting Room", "Parking", "ATM", "Medical Room", "Escalator"],
+    "elevation": 218,
+    "connectivity": ["Delhi", "Meerut", "Muzaffarnagar", "Saharanpur", "Moradabad"]
+  },
+  {
+    "id": "MTC",
+    "name": "Meerut City Junction",
+    "city": "Meerut",
+    "state": "Uttar Pradesh",
+    "station_code": "MTC",
+    "zone": "Northern Railway",
+    "type": "major",
+    "platforms": 4,
+    "facilities": ["WiFi", "Food Court", "Waiting Room", "Parking", "ATM"],
+    "elevation": 237,
+    "connectivity": ["Delhi", "Ghaziabad", "Muzaffarnagar", "Saharanpur", "Moradabad"]
+  }
+]

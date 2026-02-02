@@ -1,0 +1,464 @@
+[
+  {
+    "id": "taj-mahal-hotel-mumbai",
+    "name": "The Taj Mahal Palace",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "area": "Colaba",
+    "category": "luxury",
+    "rating": 5
+  },
+  {
+    "id": "oberoi-delhi",
+    "name": "The Oberoi New Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "area": "Dr. Zakir Hussain Marg",
+    "category": "luxury",
+    "rating": 5
+  },
+  {
+    "id": "leela-palace-bangalore",
+    "name": "The Leela Palace Bangalore",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "area": "HAL Airport Road",
+    "category": "luxury",
+    "rating": 5
+  },
+  {
+    "id": "park-hyatt-chennai",
+    "name": "Park Hyatt Chennai",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "area": "Velachery Road",
+    "category": "luxury",
+    "rating": 5
+  },
+  {
+    "id": "jw-marriott-kolkata",
+    "name": "JW Marriott Hotel Kolkata",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "area": "Elgin Road",
+    "category": "luxury",
+    "rating": 5
+  },
+  {
+    "id": "park-hyatt-hyderabad",
+    "name": "Park Hyatt Hyderabad",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "area": "Banjara Hills",
+    "category": "luxury",
+    "rating": 5
+  },
+  {
+    "id": "trident-ahmedabad",
+    "name": "Trident Ahmedabad",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "area": "C.G. Road",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "grand-hyatt-kochi",
+    "name": "Grand Hyatt Kochi Bolgatty",
+    "city": "Kochi",
+    "state": "Kerala",
+    "area": "Bolgatty Island",
+    "category": "luxury",
+    "rating": 5
+  },
+  {
+    "id": "conrad-pune",
+    "name": "Conrad Pune",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "area": "Koregaon Park",
+    "category": "luxury",
+    "rating": 5
+  },
+  {
+    "id": "fairmont-jaipur",
+    "name": "Fairmont Jaipur",
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "area": "Kukas",
+    "category": "luxury",
+    "rating": 5
+  },
+  {
+    "id": "grand-hyatt-goa",
+    "name": "Grand Hyatt Goa",
+    "city": "Goa",
+    "state": "Goa",
+    "area": "Bambolim",
+    "category": "luxury",
+    "rating": 5
+  },
+  {
+    "id": "vivanta-trivandrum",
+    "name": "Vivanta Trivandrum",
+    "city": "Thiruvananthapuram",
+    "state": "Kerala",
+    "area": "Kowdiar",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "renaissance-lucknow",
+    "name": "Renaissance Lucknow Hotel",
+    "city": "Lucknow",
+    "state": "Uttar Pradesh",
+    "area": "Gomti Nagar",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "hyatt-chandigarh",
+    "name": "Hyatt Regency Chandigarh",
+    "city": "Chandigarh",
+    "state": "Chandigarh",
+    "area": "IT Park",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "radisson-blu-nagpur",
+    "name": "Radisson Blu Hotel Nagpur",
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "area": "Wardha Road",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "mayfair-siliguri",
+    "name": "Mayfair Siliguri",
+    "city": "Siliguri",
+    "state": "West Bengal",
+    "area": "City Centre",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "clarks-varanasi",
+    "name": "Clarks Varanasi",
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "area": "The Mall",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "vivanta-guwahati",
+    "name": "Vivanta Guwahati",
+    "city": "Guwahati",
+    "state": "Assam",
+    "area": "GS Road",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "fortune-jammu",
+    "name": "Fortune Inn Riviera",
+    "city": "Jammu",
+    "state": "Jammu and Kashmir",
+    "area": "Residency Road",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "heritage-madurai",
+    "name": "Heritage Madurai",
+    "city": "Madurai",
+    "state": "Tamil Nadu",
+    "area": "Melur Road",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "novotel-vijayawada",
+    "name": "Novotel Vijayawada Varun",
+    "city": "Vijayawada",
+    "state": "Andhra Pradesh",
+    "area": "MG Road",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "vivanta-coimbatore",
+    "name": "Vivanta Coimbatore",
+    "city": "Coimbatore",
+    "state": "Tamil Nadu",
+    "area": "Race Course Road",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "courtyard-bhopal",
+    "name": "Courtyard by Marriott Bhopal",
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "area": "Arera Hills",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "hyatt-raipur",
+    "name": "Hyatt Raipur",
+    "city": "Raipur",
+    "state": "Chhattisgarh",
+    "area": "Ring Road",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "radisson-ranchi",
+    "name": "Radisson Blu Hotel Ranchi",
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "area": "Hinoo",
+    "category": "business",
+    "rating": 4
+  },
+  {
+    "id": "budget-inn-delhi",
+    "name": "Hotel City Park",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "area": "Karol Bagh",
+    "category": "budget",
+    "rating": 3
+  },
+  {
+    "id": "oyo-mumbai-central",
+    "name": "OYO Premium Mumbai Central",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "area": "Mumbai Central",
+    "category": "budget",
+    "rating": 3
+  },
+  {
+    "id": "treebo-bangalore-mg",
+    "name": "Treebo Trend MG Road",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "area": "MG Road",
+    "category": "budget",
+    "rating": 3
+  },
+  {
+    "id": "zostel-chennai",
+    "name": "Zostel Chennai",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "area": "Alwarpet",
+    "category": "hostel",
+    "rating": 3
+  },
+  {
+    "id": "backpacker-panda-kolkata",
+    "name": "Backpacker Panda Kolkata",
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "area": "Sudder Street",
+    "category": "hostel",
+    "rating": 3
+  },
+  {
+    "id": "oyo-hyderabad-hitech",
+    "name": "OYO Premium Hitech City",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "area": "Hitech City",
+    "category": "budget",
+    "rating": 3
+  },
+  {
+    "id": "fabhotel-ahmedabad",
+    "name": "FabHotel Prime Ahmedabad",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "area": "Satellite",
+    "category": "budget",
+    "rating": 3
+  },
+  {
+    "id": "zostel-kochi",
+    "name": "Zostel Kochi",
+    "city": "Kochi",
+    "state": "Kerala",
+    "area": "Fort Kochi",
+    "category": "hostel",
+    "rating": 3
+  },
+  {
+    "id": "treebo-pune-camp",
+    "name": "Treebo Trend Pune Camp",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "area": "Camp",
+    "category": "budget",
+    "rating": 3
+  },
+  {
+    "id": "zostel-jaipur",
+    "name": "Zostel Jaipur",
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "area": "Mi Road",
+    "category": "hostel",
+    "rating": 3,
+    "price_range": "₹500-1500",
+    "amenities": ["WiFi", "AC", "Common Kitchen", "Laundry"],
+    "contact": "+91-9876543210"
+  },
+  {
+    "id": "hotel-ashoka-muzaffarnagar",
+    "name": "Hotel Ashoka",
+    "city": "Muzaffarnagar",
+    "state": "Uttar Pradesh",
+    "area": "Civil Lines",
+    "category": "business",
+    "rating": 3,
+    "price_range": "₹1200-2500",
+    "amenities": ["WiFi", "AC", "Restaurant", "Room Service", "Parking"],
+    "contact": "+91-0131-2345678"
+  },
+  {
+    "id": "hotel-grand-muzaffarnagar",
+    "name": "Hotel Grand Plaza",
+    "city": "Muzaffarnagar",
+    "state": "Uttar Pradesh",
+    "area": "Mahavir Chowk",
+    "category": "business",
+    "rating": 4,
+    "price_range": "₹2000-4000",
+    "amenities": ["WiFi", "AC", "Restaurant", "Conference Hall", "Parking", "Gym"],
+    "contact": "+91-0131-2567890"
+  },
+  {
+    "id": "hotel-prince-muzaffarnagar",
+    "name": "Hotel Prince",
+    "city": "Muzaffarnagar",
+    "state": "Uttar Pradesh",
+    "area": "Railway Road",
+    "category": "budget",
+    "rating": 3,
+    "price_range": "₹800-1800",
+    "amenities": ["WiFi", "AC", "Restaurant", "Room Service"],
+    "contact": "+91-0131-2234567"
+  },
+  {
+    "id": "guest-house-muzaffarnagar",
+    "name": "Shanti Guest House",
+    "city": "Muzaffarnagar",
+    "state": "Uttar Pradesh",
+    "area": "Court Road",
+    "category": "budget",
+    "rating": 2,
+    "price_range": "₹500-1200",
+    "amenities": ["WiFi", "Fan/AC", "Basic Restaurant"],
+    "contact": "+91-0131-2345679"
+  },
+  {
+    "id": "hotel-saharanpur-plaza",
+    "name": "Hotel Saharanpur Plaza",
+    "city": "Saharanpur",
+    "state": "Uttar Pradesh",
+    "area": "Court Road",
+    "category": "business",
+    "rating": 4,
+    "price_range": "₹1800-3500",
+    "amenities": ["WiFi", "AC", "Restaurant", "Conference Hall", "Parking", "Room Service"],
+    "contact": "+91-0132-2567890"
+  },
+  {
+    "id": "hotel-meerut-grand",
+    "name": "Hotel Meerut Grand",
+    "city": "Meerut",
+    "state": "Uttar Pradesh",
+    "area": "Abu Lane",
+    "category": "business",
+    "rating": 4,
+    "price_range": "₹2200-4200",
+    "amenities": ["WiFi", "AC", "Restaurant", "Banquet Hall", "Parking", "Gym", "Spa"],
+    "contact": "+91-0121-2567890"
+  },
+  {
+    "id": "hotel-roorkee-palace",
+    "name": "Hotel Roorkee Palace",
+    "city": "Roorkee",
+    "state": "Uttarakhand",
+    "area": "Civil Lines",
+    "category": "business",
+    "rating": 3,
+    "price_range": "₹1500-2800",
+    "amenities": ["WiFi", "AC", "Restaurant", "Room Service", "Parking"],
+    "contact": "+91-01332-234567"
+  },
+  {
+    "id": "ganga-lahari-haridwar",
+    "name": "Ganga Lahari Hotel",
+    "city": "Haridwar",
+    "state": "Uttarakhand",
+    "area": "Har Ki Pauri",
+    "category": "business",
+    "rating": 4,
+    "price_range": "₹2500-5000",
+    "amenities": ["WiFi", "AC", "Restaurant", "River View", "Parking", "Temple Nearby"],
+    "contact": "+91-01334-234567"
+  },
+  {
+    "id": "hotel-dehradun-regency",
+    "name": "Hotel Dehradun Regency",
+    "city": "Dehradun",
+    "state": "Uttarakhand",
+    "area": "Rajpur Road",
+    "category": "luxury",
+    "rating": 4,
+    "price_range": "₹3500-7000",
+    "amenities": ["WiFi", "AC", "Restaurant", "Conference Hall", "Parking", "Gym", "Spa", "Mountain View"],
+    "contact": "+91-0135-2567890"
+  },
+  {
+    "id": "hotel-moradabad-inn",
+    "name": "Hotel Moradabad Inn",
+    "city": "Moradabad",
+    "state": "Uttar Pradesh",
+    "area": "Civil Lines",
+    "category": "business",
+    "rating": 3,
+    "price_range": "₹1400-2600",
+    "amenities": ["WiFi", "AC", "Restaurant", "Room Service", "Parking"],
+    "contact": "+91-0591-2345678"
+  },
+  {
+    "id": "hotel-bareilly-palace",
+    "name": "Hotel Bareilly Palace",
+    "city": "Bareilly",
+    "state": "Uttar Pradesh",
+    "area": "Civil Lines",
+    "category": "business",
+    "rating": 3,
+    "price_range": "₹1600-3000",
+    "amenities": ["WiFi", "AC", "Restaurant", "Banquet Hall", "Parking"],
+    "contact": "+91-0581-2567890"
+  },
+  {
+    "id": "hotel-ghaziabad-crown",
+    "name": "Hotel Crown Plaza Ghaziabad",
+    "city": "Ghaziabad",
+    "state": "Uttar Pradesh",
+    "area": "Raj Nagar",
+    "category": "luxury",
+    "rating": 4,
+    "price_range": "₹3000-6000",
+    "amenities": ["WiFi", "AC", "Restaurant", "Conference Hall", "Parking", "Gym", "Swimming Pool"],
+    "contact": "+91-0120-2567890"
+  }
+]

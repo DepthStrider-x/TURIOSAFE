@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Perfect Journey - TourioSafe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tourist-safety.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        /* Additional styles for detailed activities */
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .activity-icon {
+            font-size: 1.2rem;
+        }
+        
+        .activity-rating {
+            background: #FFD700;
+            color: #333;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+        
+        .activity-tips {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .activity-tips ul {
+            margin: 8px 0 0 0;
+            padding-left: 20px;
+        }
+        
+        .activity-tips li {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .weather-description {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        .carbon-breakdown .breakdown-item,
+        .budget-breakdown .budget-category,
+        .daily-breakdown .day-budget {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .carbon-breakdown .breakdown-item:last-child,
+        .budget-breakdown .budget-category:last-child,
+        .daily-breakdown .day-budget:last-child {
+            border-bottom: none;
+        }
+        
+        .budget-summary {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .timeline-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="navbar-brand">
+                <img src="images/logo.png" class="logo" alt="TourioSafe">
+                <span>TOURIOSAFE</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="report.html">Report Incident</a></li>
+                <li><a href="#">Map</a></li>
+                <li><a href="#">My Trips</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><button id="sosBtn" class="sos-button">🚨 SOS</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ITINERARY HERO SECTION -->
+    <section class="itinerary-hero">
+        <div class="container">
+            <div class="hero-background">
+                <button class="back-btn" onclick="history.back()">
+                    ← Back to Builder
+                </button>
+                <h1 id="itinerary-title">Your Perfect Journey</h1>
+                <div class="itinerary-meta">
+                    <div class="meta-item">
+                        <span class="label">Duration</span>
+                        <span class="value" id="trip-duration">3 Days</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label">Budget</span>
+                        <span class="value" id="trip-budget">₹15,000</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label">TourioRating™</span>
+                        <div class="rating-display">
+                            <span class="stars" id="trip-rating">★★★★★</span>
+                            <span class="value" id="rating-score">4.8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ITINERARY CONTENT -->
+    <section class="itinerary-content">
+        <div class="container">
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Timeline Panel -->
+                <div class="timeline-panel">
+                    <div class="panel-header">
+                        <h3>📅 Day-by-Day Itinerary</h3>
+                        <div class="itinerary-controls">
+                            <button class="control-btn" id="expandAll">Expand All</button>
+                            <button class="control-btn" id="collapseAll">Collapse All</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Day Tabs -->
+                    <div class="day-tabs" id="dayTabs">
+                        <div class="day-tab active" data-day="1">
+                            <div class="tab-content">
+                                <div class="day-number">Day 1</div>
+                                <div class="day-title">Arrival & Exploration</div>
+                                <div class="day-cost">₹5,000</div>
+                            </div>
+                        </div>
+                        <div class="day-tab" data-day="2">
+                            <div class="tab-content">
+                                <div class="day-number">Day 2</div>
+                                <div class="day-title">Main Attractions</div>
+                                <div class="day-cost">₹6,000</div>
+                            </div>
+                        </div>
+                        <div class="day-tab" data-day="3">
+                            <div class="tab-content">
+                                <div class="day-number">Day 3</div>
+                                <div class="day-title">Main Attractions</div>
+                                <div class="day-cost">₹4,000</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Content -->
+                    <div class="timeline-content" id="timelineContent">
+                        <div id="day-activities">
+                            <div class="day-header">
+                                <h4>Day 1 - Arrival & Exploration</h4>
+                                <span class="day-date">Loading...</span>
+                            </div>
+                            <div class="timeline-items">
+                                <!-- Activities will be loaded here by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Panel -->
+                <div class="map-panel">
+                    <div class="panel-header">
+                        <h3>🗺️ Interactive Map</h3>
+                        <div class="itinerary-controls">
+                            <button class="control-btn" id="focusRoute">Focus Route</button>
+                            <button class="control-btn" id="showAll">Show All</button>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <div id="itinerary-map" style="height: 400px; border-radius: 12px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Section -->
+            <div class="action-section">
+                <h3>Ready to Book Your Journey?</h3>
+                <div class="action-buttons">
+                    <a href="#" class="action-btn primary" id="bookNow">
+                        ✈️ Book Now
+                    </a>
+                    <a href="#" class="action-btn secondary" id="shareItinerary">
+                        📤 Share Itinerary
+                    </a>
+                    <a href="#" class="action-btn secondary" id="saveItinerary">
+                        💾 Save for Later
+                    </a>
+                    <a href="index.html" class="action-btn secondary">
+                        🔄 Create New
+                    </a>
+                </div>
+            </div>
+
+            <!-- Additional Features -->
+            <div class="additional-features">
+                <h3>Additional Travel Information</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🌤️ Weather Forecast</h4>
+                        <p>Check the weather conditions for your travel dates</p>
+                        <button class="feature-btn" onclick="showWeatherModal()">View Forecast</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌱 Carbon Footprint</h4>
+                        <p>Your trip's environmental impact and eco-friendly tips</p>
+                        <button class="feature-btn" onclick="showCarbonModal()">View Details</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📱 Emergency Contacts</h4>
+                        <p>Important local emergency numbers and safety tips</p>
+                        <button class="feature-btn" onclick="showEmergencyModal()">View Contacts</button>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💰 Budget Breakdown</h4>
+                        <p>Detailed cost analysis and money-saving tips</p>
+                        <button class="feature-btn" onclick="showBudgetModal()">View Breakdown</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather Modal -->
+    <div class="modal" id="weatherModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🌤️ Weather Forecast</h3>
+                <button class="close-modal" onclick="closeModal('weatherModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="weather-content" id="weatherContent">
+                    <!-- Weather data will be loaded here -->
+                    <div class="weather-day">
+                        <h4>Today</h4>
+                        <div class="weather-icon">☀️</div>
+                        <div class="weather-temp">25°C - 32°C</div>
+                        <div class="weather-desc">Sunny</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carbon Footprint Modal -->
+    <div class="modal" id="carbonModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🌱 Carbon Footprint Analysis</h3>
+                <button class="close-modal" onclick="closeModal('carbonModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="carbon-summary">
+                    <div class="carbon-stat">
+                        <span class="carbon-number">12.4</span>
+                        <span class="carbon-unit">kg CO₂</span>
+                        <span class="carbon-label">Total Emissions</span>
+                    </div>
+                    <div class="carbon-comparison">
+                        <p>🌍 That's 65% lower than average tourist trips!</p>
+                    </div>
+                </div>
+                <div class="eco-tips">
+                    <h4>🌱 Eco-Friendly Tips</h4>
+                    <ul>
+                        <li>Use public transportation when possible</li>
+                        <li>Choose eco-certified accommodations</li>
+                        <li>Support local businesses and vendors</li>
+                        <li>Minimize plastic usage during your trip</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Contacts Modal -->
+    <div class="modal" id="emergencyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📱 Emergency Contacts</h3>
+                <button class="close-modal" onclick="closeModal('emergencyModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="emergency-contacts">
+                    <div class="contact-group">
+                        <h4>🚨 National Emergency Numbers</h4>
+                        <ul>
+                            <li><strong>Police:</strong> 100</li>
+                            <li><strong>Fire:</strong> 101</li>
+                            <li><strong>Ambulance:</strong> 108</li>
+                            <li><strong>Tourist Helpline:</strong> 1363</li>
+                        </ul>
+                    </div>
+                    <div class="contact-group">
+                        <h4>🏥 Local Medical Centers</h4>
+                        <ul>
+                            <li>City Hospital: +91-XXXX-XXXXXX</li>
+                            <li>Emergency Clinic: +91-XXXX-XXXXXX</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Budget Breakdown Modal -->
+    <div class="modal" id="budgetModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>💰 Budget Breakdown</h3>
+                <button class="close-modal" onclick="closeModal('budgetModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="budget-breakdown">
+                    <div class="budget-category">
+                        <span class="category-name">🏨 Accommodation</span>
+                        <span class="category-amount">₹6,000 (40%)</span>
+                    </div>
+                    <div class="budget-category">
+                        <span class="category-name">🍽️ Food & Dining</span>
+                        <span class="category-amount">₹4,500 (30%)</span>
+                    </div>
+                    <div class="budget-category">
+                        <span class="category-name">🚗 Transportation</span>
+                        <span class="category-amount">₹3,000 (20%)</span>
+                    </div>
+                    <div class="budget-category">
+                        <span class="category-name">🎯 Activities</span>
+                        <span class="category-amount">₹1,500 (10%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 TourioSafe. All rights reserved.</p>
+            <p>Follow us on: 
+                <a href="#">Facebook</a> | 
+                <a href="#">Instagram</a> | 
+                <a href="#">Twitter</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="main.js"></script>
+    <script src="itinerary-builder.js"></script>
+    <script>
+        let currentItinerary = null;
+        let itineraryMap = null;
+
+        // Initialize the itinerary page when DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeItinerary();
+            setupEventListeners();
+        });
+
+        // Main initialization function
+        function initializeItinerary() {
+            const data = sessionStorage.getItem('generatedItinerary');
+            console.log('Session storage data:', data);
+            if (data) {
+                currentItinerary = JSON.parse(data);
+                console.log('Loading dynamic itinerary:', currentItinerary);
+                console.log('Sample activity:', currentItinerary.dailyItinerary?.[0]?.activities?.[0]);
+            } else {
+                // Load detailed Shimla sample data if no session data
+                currentItinerary = getDetailedShimlaItinerary();
+                console.log('Using fallback Shimla itinerary - no session data found');
+            }
+            
+            // Populate all sections with data
+            populateItineraryData(currentItinerary);
+            populateDetailedSections(currentItinerary);
+        }
+
+        // Get detailed Shimla itinerary (fallback)
+        function getDetailedShimlaItinerary() {
+            return {
+                title: "3-Day Shimla Hill Station Adventure",
+                origin: "Delhi",
+                destination: "Shimla",
+                days: 3,
+                budget: 25000,
+                tourioRating: 4.7,
+                totalCost: 22500,
+                carbonFootprint: 18.5,
+                dailyItinerary: [
+                    {
+                        day: 1,
+                        date: getDateForDay(1),
+                        title: "Arrival & Mall Road Exploration",
+                        activities: [
+                            {
+                                id: "1-1",
+                                name: "🏨 9:00 AM - Hotel Check-in & Freshen Up",
+                                type: "accommodation",
+                                description: "Check into your cozy hill station hotel with mountain views. Room includes valley view, complimentary breakfast, and Wi-Fi. Take time to freshen up and acclimate to the mountain air.",
+                                startTime: "09:00",
+                                endTime: "10:00",
+                                duration: 60,
+                                cost: 0,
+                                rating: 4.5,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.5,
+                                tips: ["Keep valuables in hotel safe", "Ask for room with valley view", "Get local area map from reception", "Check heating system for evening"]
+                            },
+                            {
+                                id: "1-2", 
+                                name: "🚶 10:30 AM - Mall Road Walking Tour",
+                                type: "heritage",
+                                description: "Start with the famous Mall Road, Shimla's main shopping and cultural hub. Walk along the pedestrian-only road, see colonial architecture, and visit the famous Christ Church. Experience the British-era charm.",
+                                startTime: "10:30",
+                                endTime: "12:30",
+                                duration: 120,
+                                cost: 0,
+                                rating: 4.6,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.8,
+                                tips: ["Wear comfortable walking shoes", "Carry a light jacket - weather changes quickly", "Try local street food safely", "Take photos at Christ Church"]
+                            },
+                            {
+                                id: "1-3",
+                                name: "🍽️ 12:30 PM - Traditional Himachali Lunch",
+                                type: "food",
+                                description: "Enjoy authentic Himachali cuisine at a local restaurant. Try Dham (traditional feast), Rajma, Chana Madra, and local bread. Experience the unique flavors of mountain cuisine with a view of the valley.",
+                                startTime: "12:30",
+                                endTime: "14:00",
+                                duration: 90,
+                                cost: 800,
+                                rating: 4.7,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.2,
+                                tips: ["Try the authentic Dham if available", "Ask for mild spice level", "Local lassi is excellent", "Restaurant offers valley views"]
+                            },
+                            {
+                                id: "1-4",
+                                name: "🏔️ 2:30 PM - Ridge & Scandal Point Visit",
+                                type: "heritage",
+                                description: "Visit the Ridge, an open space in the heart of Shimla with panoramic mountain views. Walk to Scandal Point with its historical significance and stunning valley vistas. Perfect for photography and relaxation.",
+                                startTime: "14:30",
+                                endTime: "16:00",
+                                duration: 90,
+                                cost: 0,
+                                rating: 4.8,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.6,
+                                tips: ["Best time for photos is afternoon light", "Wear layers - mountain weather changes", "Don't miss the panoramic valley views", "Learn about the historical scandal story"]
+                            },
+                            {
+                                id: "1-5",
+                                name: "🛍️ 4:30 PM - Local Shopping at Lakkar Bazaar",
+                                type: "shopping",
+                                description: "Explore Lakkar Bazaar, famous for wooden handicrafts, souvenirs, and local products. Buy authentic Himachali caps, wooden toys, shawls, and local honey. Practice your bargaining skills with friendly shopkeepers.",
+                                startTime: "16:30",
+                                endTime: "18:00",
+                                duration: 90,
+                                cost: 1200,
+                                rating: 4.4,
+                                coordinates: { lat: 31.1024, lng: 77.1716 },
+                                safetyRating: 9.1,
+                                tips: ["Bargain to 60% of asking price", "Check quality of wooden items", "Buy authentic local honey", "Himachali caps make great souvenirs"]
+                            },
+                            {
+                                id: "1-6",
+                                name: "🌅 6:30 PM - Sunset at Jakhoo Hill",
+                                type: "nature",
+                                description: "Take a short trek or drive to Jakhoo Hill, the highest point in Shimla. Visit the Hanuman Temple and enjoy breathtaking sunset views over the Himalayan ranges. Experience the spiritual atmosphere and mountain serenity.",
+                                startTime: "18:30",
+                                endTime: "20:00",
+                                duration: 90,
+                                cost: 300,
+                                rating: 4.9,
+                                coordinates: { lat: 31.1127, lng: 77.1773 },
+                                safetyRating: 8.9,
+                                tips: ["Start early for sunset timing", "Carry torch for evening descent", "Monkeys are friendly but don't feed them", "Temple visit is optional but recommended"]
+                            },
+                            {
+                                id: "1-7",
+                                name: "🍽️ 8:30 PM - Cozy Mountain Dinner",
+                                type: "food",
+                                description: "End the day with a warm dinner at a mountain restaurant. Try local trout fish, North Indian cuisine, or continental food. Enjoy the cozy atmosphere with fireplace and mountain hospitality.",
+                                startTime: "20:30",
+                                endTime: "22:00",
+                                duration: 90,
+                                cost: 1000,
+                                rating: 4.6,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.4,
+                                tips: ["Try the local trout if available", "Ask for table near fireplace", "Hot soup is perfect for mountain evening", "Early dinner recommended in mountains"]
+                            }
+                        ],
+                        totalCost: 3300,
+                        totalDuration: 750
+                    },
+                    {
+                        day: 2,
+                        date: getDateForDay(2),
+                        title: "Adventure & Nature Day",
+                        activities: [
+                            {
+                                id: "2-1",
+                                name: "🌅 7:00 AM - Early Morning Wake Up & Tea",
+                                type: "relaxation",
+                                description: "Wake up early to enjoy the crisp mountain air and sunrise views from your hotel. Have a hot cup of local chai while watching the mountains come alive with golden morning light.",
+                                startTime: "07:00",
+                                endTime: "08:00",
+                                duration: 60,
+                                cost: 100,
+                                rating: 4.8,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.8,
+                                tips: ["Set alarm for sunrise", "Have warm clothes ready", "Hotel balcony perfect for sunrise", "Local chai is a must-try"]
+                            },
+                            {
+                                id: "2-2",
+                                name: "🍳 8:30 AM - Hearty Mountain Breakfast",
+                                type: "food",
+                                description: "Enjoy a filling breakfast with parathas, eggs, local bread, butter, jam, and hot coffee. Mountain breakfast includes fresh fruits and gives you energy for the day's adventures.",
+                                startTime: "08:30",
+                                endTime: "09:30",
+                                duration: 60,
+                                cost: 400,
+                                rating: 4.5,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.6,
+                                tips: ["Eat well - big day ahead", "Try local honey with parathas", "Hot coffee essential for mountain morning", "Fresh mountain air increases appetite"]
+                            },
+                            {
+                                id: "2-3",
+                                name: "🚗 10:00 AM - Drive to Kufri (Adventure Activities)",
+                                type: "adventure",
+                                description: "Take a scenic 30-minute drive to Kufri, famous for adventure sports and beautiful landscapes. Enjoy horse riding, yak rides, and stunning mountain views. Experience the thrill of mountain adventures.",
+                                startTime: "10:00",
+                                endTime: "14:00",
+                                duration: 240,
+                                cost: 2000,
+                                rating: 4.7,
+                                coordinates: { lat: 31.0975, lng: 77.2648 },
+                                safetyRating: 8.7,
+                                tips: ["Book horse ride in advance", "Carry warm clothes - higher altitude", "Photography allowed everywhere", "Try yak ride for unique experience"]
+                            },
+                            {
+                                id: "2-4",
+                                name: "🍽️ 2:00 PM - Lunch at Kufri with Mountain Views",
+                                type: "food",
+                                description: "Enjoy lunch at a hilltop restaurant in Kufri with panoramic mountain views. Try North Indian cuisine, local specialties, and hot beverages while enjoying the scenic beauty.",
+                                startTime: "14:00",
+                                endTime: "15:30",
+                                duration: 90,
+                                cost: 900,
+                                rating: 4.6,
+                                coordinates: { lat: 31.0975, lng: 77.2648 },
+                                safetyRating: 9.3,
+                                tips: ["Window seat for best views", "Hot soup recommended", "Local vegetables are fresh", "Take photos during lunch"]
+                            },
+                            {
+                                id: "2-5",
+                                name: "🌲 4:00 PM - Nature Walk in Himalayan Forest",
+                                type: "nature",
+                                description: "Take a peaceful nature walk through pine and deodar forests. Breathe fresh mountain air, spot local birds, and enjoy the tranquility of Himalayan nature. Perfect for relaxation and photography.",
+                                startTime: "16:00",
+                                endTime: "17:30",
+                                duration: 90,
+                                cost: 200,
+                                rating: 4.8,
+                                coordinates: { lat: 31.0975, lng: 77.2648 },
+                                safetyRating: 9.1,
+                                tips: ["Wear comfortable walking shoes", "Carry water bottle", "Stay on marked trails", "Best time for bird watching"]
+                            },
+                            {
+                                id: "2-6",
+                                name: "🚗 6:00 PM - Return Journey to Shimla",
+                                type: "transport",
+                                description: "Drive back to Shimla enjoying the scenic mountain roads and evening views. Stop at viewpoints for photos and reach Shimla by evening for dinner and rest.",
+                                startTime: "18:00",
+                                endTime: "19:00",
+                                duration: 60,
+                                cost: 500,
+                                rating: 4.4,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.2,
+                                tips: ["Check vehicle before return", "Stop at viewpoints for photos", "Evening mountain roads are beautiful", "Reach before dark for safety"]
+                            },
+                            {
+                                id: "2-7",
+                                name: "🍽️ 8:00 PM - Traditional Dinner & Rest",
+                                type: "food",
+                                description: "End the adventurous day with a traditional dinner at a local restaurant. Try regional specialties, warm desserts, and hot beverages. Early rest to prepare for the final day.",
+                                startTime: "20:00",
+                                endTime: "21:30",
+                                duration: 90,
+                                cost: 800,
+                                rating: 4.5,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.5,
+                                tips: ["Try local desserts", "Hot beverages perfect after adventure day", "Early dinner and rest recommended", "Ask about regional specialties"]
+                            }
+                        ],
+                        totalCost: 4900,
+                        totalDuration: 831
+                    },
+                    {
+                        day: 3,
+                        date: getDateForDay(3),
+                        title: "Heritage & Departure",
+                        activities: [
+                            {
+                                id: "3-1",
+                                name: "🌅 8:00 AM - Leisurely Breakfast & Packing",
+                                type: "accommodation",
+                                description: "Enjoy a relaxed breakfast at the hotel and pack your belongings. Check out formalities and prepare for the final day's sightseeing before departure.",
+                                startTime: "08:00",
+                                endTime: "09:30",
+                                duration: 90,
+                                cost: 0,
+                                rating: 4.4,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.7,
+                                tips: ["Pack warm clothes separately", "Keep essentials in hand luggage", "Confirm checkout time", "Leave heavy luggage at hotel if needed"]
+                            },
+                            {
+                                id: "3-2",
+                                name: "🏛️ 10:00 AM - Viceregal Lodge (Rashtrapati Niwas) Tour",
+                                type: "heritage",
+                                description: "Visit the magnificent Viceregal Lodge, former summer residence of British Viceroys. Explore the colonial architecture, beautiful gardens, and learn about India's political history. A must-visit heritage site.",
+                                startTime: "10:00",
+                                endTime: "12:00",
+                                duration: 120,
+                                cost: 400,
+                                rating: 4.9,
+                                coordinates: { lat: 31.0983, lng: 77.1722 },
+                                safetyRating: 9.8,
+                                tips: ["Book tickets in advance", "Photography rules are strict", "Guide highly recommended", "Beautiful gardens perfect for photos"]
+                            },
+                            {
+                                id: "3-3",
+                                name: "🛍️ 12:30 PM - Final Shopping & Souvenirs",
+                                type: "shopping",
+                                description: "Last-minute shopping for souvenirs, local products, and gifts. Visit local markets for Himachali handicrafts, woolen clothes, dry fruits, and traditional items to remember your Shimla trip.",
+                                startTime: "12:30",
+                                endTime: "14:00",
+                                duration: 90,
+                                cost: 1500,
+                                rating: 4.3,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.2,
+                                tips: ["Buy authentic local products", "Check quality before purchasing", "Keep receipts for expensive items", "Dry fruits and honey are specialties"]
+                            },
+                            {
+                                id: "3-4",
+                                name: "🍽️ 2:00 PM - Farewell Lunch with Valley Views",
+                                type: "food",
+                                description: "Enjoy your final meal in Shimla at a restaurant with spectacular valley views. Savor the mountain cuisine one last time and create beautiful memories of your hill station experience.",
+                                startTime: "14:00",
+                                endTime: "15:30",
+                                duration: 90,
+                                cost: 1000,
+                                rating: 4.7,
+                                coordinates: { lat: 31.1048, lng: 77.1734 },
+                                safetyRating: 9.4,
+                                tips: ["Choose restaurant with best valley views", "Try favorite dishes one last time", "Take final photos with mountain backdrop", "Light lunch recommended before travel"]
+                            },
+                            {
+                                id: "3-5",
+                                name: "🚗 4:00 PM - Departure Journey to Delhi",
+                                type: "transport",
+                                description: "Begin your return journey to Delhi via scenic mountain roads. Enjoy the last glimpses of Himalayan landscapes and carry beautiful memories of your Shimla adventure.",
+                                startTime: "16:00",
+                                endTime: "21:00",
+                                duration: 300,
+                                cost: 2000,
+                                rating: 4.5,
+                                coordinates: { lat: 28.6139, lng: 77.2090 },
+                                safetyRating: 8.8,
+                                tips: ["Start early to avoid evening traffic", "Keep snacks and water for journey", "Take breaks every 2 hours", "Check vehicle before departure"]
+                            }
+                        ],
+                        totalCost: 4900,
+                        totalDuration: 690
+                    }
+                ],
+                weatherForecast: [
+                    {
+                        day: 1,
+                        date: getDateForDay(1),
+                        condition: "Partly Cloudy",
+                        temperature: { high: 22, low: 8 },
+                        humidity: 65,
+                        rainfall: 0,
+                        windSpeed: 8,
+                        uvIndex: 6,
+                        sunrise: "06:45",
+                        sunset: "18:15",
+                        description: "Pleasant mountain weather with cool breeze"
+                    },
+                    {
+                        day: 2,
+                        date: getDateForDay(2),
+                        condition: "Sunny",
+                        temperature: { high: 24, low: 10 },
+                        humidity: 55,
+                        rainfall: 0,
+                        windSpeed: 10,
+                        uvIndex: 7,
+                        sunrise: "06:44",
+                        sunset: "18:16",
+                        description: "Clear sunny day perfect for outdoor activities"
+                    },
+                    {
+                        day: 3,
+                        date: getDateForDay(3),
+                        condition: "Light Clouds",
+                        temperature: { high: 20, low: 7 },
+                        humidity: 70,
+                        rainfall: 5,
+                        windSpeed: 12,
+                        uvIndex: 5,
+                        sunrise: "06:43",
+                        sunset: "18:17",
+                        description: "Mild clouds with possibility of light drizzle"
+                    }
+                ],
+                safetyAlerts: [
+                    { type: 'safe', icon: '✅', message: 'Shimla is very safe for tourists with excellent local support' },
+                    { type: 'weather', icon: '🌡️', message: 'Mountain weather changes quickly - carry layers and warm clothes' },
+                    { type: 'altitude', icon: '⛰️', message: 'Take time to acclimatize to mountain altitude, stay hydrated' },
+                    { type: 'transport', icon: '🚗', message: 'Mountain roads require careful driving - hire experienced drivers' }
+                ],
+                localTips: [
+                    { category: 'Transport', tip: 'Toy train and taxi services available. Book Kalka-Shimla train in advance.' },
+                    { category: 'Food', tip: 'Must try: Chana Madra, Dham, local trout, and mountain honey.' },
+                    { category: 'Shopping', tip: 'Best buys: Woolen clothes, wooden handicrafts, local honey, dry fruits.' },
+                    { category: 'Weather', tip: 'Carry layers - weather changes quickly. Evening can be cold even in summer.' }
+                ],
+                carbonFootprint: {
+                    total: 18.5,
+                    breakdown: { transport: 12.2, accommodation: 3.1, food: 2.0, activities: 1.2 },
+                    treesToOffset: 1,
+                    ecoTips: ['🚌 Use local buses to reduce carbon footprint', '♻️ Support eco-friendly hotels', '🌱 Choose local restaurants to reduce food miles']
+                }
+            };
+        }
+
+        // Helper function to get date for specific day
+        function getDateForDay(day) {
+            const today = new Date();
+            const targetDate = new Date(today.getTime() + (day * 24 * 60 * 60 * 1000));
+            return targetDate.toLocaleDateString('en-GB');
+        }
+
+        // Populate basic itinerary data
+        function populateItineraryData(itinerary) {
+            document.getElementById('itinerary-title').textContent = itinerary.title || 'Your Perfect Journey';
+            document.getElementById('trip-duration').textContent = `${itinerary.days} Days`;
+            document.getElementById('trip-budget').textContent = `₹${itinerary.budget.toLocaleString('en-IN')}`;
+            document.getElementById('rating-score').textContent = itinerary.tourioRating || '4.8';
+            
+            // Update rating stars
+            const starsContainer = document.getElementById('trip-rating');
+            if (starsContainer) {
+                const rating = itinerary.tourioRating || 4.8;
+                const fullStars = Math.floor(rating);
+                const hasHalfStar = rating % 1 >= 0.5;
+                let starsHtml = '';
+                
+                for (let i = 0; i < fullStars; i++) {
+                    starsHtml += '★';
+                }
+                if (hasHalfStar) {
+                    starsHtml += '☆';
+                }
+                for (let i = fullStars + (hasHalfStar ? 1 : 0); i < 5; i++) {
+                    starsHtml += '☆';
+                }
+                
+                starsContainer.innerHTML = starsHtml;
+            }
+        }
+
+        // Populate all detailed sections
+        function populateDetailedSections(itinerary) {
+            populateDayTabs(itinerary);
+            populateTimelineContent(itinerary);
+            populateWeatherForecast(itinerary);
+            initializeDetailedMap(itinerary);
+        }
+
+        // Populate day tabs with real data
+        function populateDayTabs(itinerary) {
+            const dayTabsContainer = document.getElementById('dayTabs');
+            if (!dayTabsContainer || !itinerary.dailyItinerary) return;
+            
+            let tabsHtml = '';
+            itinerary.dailyItinerary.forEach((day, index) => {
+                tabsHtml += `
+                    <div class="day-tab ${index === 0 ? 'active' : ''}" data-day="${day.day}">
+                        <div class="tab-content">
+                            <div class="day-number">Day ${day.day}</div>
+                            <div class="day-title">${day.title}</div>
+                            <div class="day-cost">₹${day.totalCost}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            dayTabsContainer.innerHTML = tabsHtml;
+            
+            // Add click handlers
+            dayTabsContainer.querySelectorAll('.day-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    dayTabsContainer.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    const day = parseInt(tab.dataset.day);
+                    showDayActivities(currentItinerary, day);
+                });
+            });
+            
+            // Show first day by default
+            showDayActivities(currentItinerary, 1);
+        }
+
+        // Show detailed activities for a specific day
+        function showDayActivities(itinerary, dayNumber) {
+            const dayData = itinerary.dailyItinerary.find(d => d.day === dayNumber);
+            if (!dayData) return;
+            
+            const container = document.getElementById('day-activities');
+            if (!container) return;
+            
+            let activitiesHtml = `
+                <div class="day-header">
+                    <h4>Day ${dayData.day} - ${dayData.title}</h4>
+                    <span class="day-date">${dayData.date}</span>
+                </div>
+                <div class="timeline-items">
+            `;
+            
+            dayData.activities.forEach((activity, index) => {
+                const typeIcon = getActivityIcon(activity.type);
+                activitiesHtml += `
+                    <div class="timeline-item" data-activity="${activity.id}">
+                        <div class="time-badge">${activity.startTime}</div>
+                        <div class="activity-info">
+                            <div class="activity-header">
+                                <span class="activity-icon">${typeIcon}</span>
+                                <h5 class="activity-title">${activity.name}</h5>
+                                <span class="activity-rating">★ ${activity.rating}</span>
+                            </div>
+                            <p class="activity-description">${activity.description}</p>
+                            <div class="activity-meta">
+                                <span class="duration">🕐 ${Math.floor(activity.duration / 60)}h ${activity.duration % 60}m</span>
+                                <span class="cost">💰 ₹${activity.cost}</span>
+                                <span class="safety">🛡️ ${activity.safetyRating}/10</span>
+                            </div>
+                            <div class="activity-tips">
+                                <strong>💡 Tips:</strong>
+                                <ul>
+                                    ${activity.tips.map(tip => `<li>${tip}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            activitiesHtml += '</div>';
+            container.innerHTML = activitiesHtml;
+        }
+
+        // Get activity type icon
+        function getActivityIcon(type) {
+            const icons = {
+                'accommodation': '🏨',
+                'heritage': '🏛️',
+                'food': '🍽️',
+                'nature': '🌿',
+                'adventure': '🏔️',
+                'shopping': '🛍️',
+                'transport': '🚗',
+                'relaxation': '🧘'
+            };
+            return icons[type] || '📍';
+        }
+
+        // Populate weather forecast
+        function populateWeatherForecast(itinerary) {
+            const weatherContainer = document.getElementById('weatherContent');
+            if (!weatherContainer || !itinerary.weatherForecast) return;
+            
+            let weatherHtml = '';
+            itinerary.weatherForecast.forEach(forecast => {
+                const weatherIcon = getWeatherIcon(forecast.condition);
+                weatherHtml += `
+                    <div class="weather-day">
+                        <h4>Day ${forecast.day}</h4>
+                        <div class="weather-date">${forecast.date}</div>
+                        <div class="weather-icon">${weatherIcon}</div>
+                        <div class="weather-temp">${forecast.temperature.low}°C - ${forecast.temperature.high}°C</div>
+                        <div class="weather-desc">${forecast.condition}</div>
+                        <div class="weather-details">
+                            <span>💧 ${forecast.humidity}%</span>
+                            <span>🌬️ ${forecast.windSpeed}km/h</span>
+                            <span>☀️ UV ${forecast.uvIndex}</span>
+                        </div>
+                        <div class="sunrise-sunset">
+                            <span>🌅 ${forecast.sunrise}</span>
+                            <span>🌇 ${forecast.sunset}</span>
+                        </div>
+                        <p class="weather-description">${forecast.description}</p>
+                    </div>
+                `;
+            });
+            
+            weatherContainer.innerHTML = weatherHtml;
+        }
+
+        function getWeatherIcon(condition) {
+            const icons = {
+                'Sunny': '☀️',
+                'Partly Cloudy': '⛅',
+                'Cloudy': '☁️',
+                'Light Clouds': '🌤️',
+                'Light Rain': '🌦️',
+                'Heavy Rain': '🌧️'
+            };
+            return icons[condition] || '☀️';
+        }
+
+        // Initialize detailed map with multiple markers
+        function initializeDetailedMap(itinerary) {
+            if (itineraryMap) {
+                itineraryMap.remove();
+            }
+            
+            // Set map center based on destination
+            let center = [31.1048, 77.1734]; // Default to Shimla
+            if (itinerary.destination === 'Delhi') center = [28.6139, 77.2090];
+            if (itinerary.destination === 'Jaipur') center = [26.9124, 75.7873];
+            if (itinerary.destination === 'Agra') center = [27.1767, 78.0081];
+            
+            itineraryMap = L.map('itinerary-map').setView(center, 11);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(itineraryMap);
+
+            // Add markers for each activity location
+            if (itinerary.dailyItinerary) {
+                itinerary.dailyItinerary.forEach(day => {
+                    day.activities.forEach(activity => {
+                        if (activity.coordinates) {
+                            const marker = L.marker([activity.coordinates.lat, activity.coordinates.lng]).addTo(itineraryMap);
+                            marker.bindPopup(`
+                                <div class="map-popup">
+                                    <h4>${activity.name}</h4>
+                                    <p>${activity.description.substring(0, 100)}...</p>
+                                    <div class="popup-meta">
+                                        <span>🕐 ${activity.startTime}</span>
+                                        <span>💰 ₹${activity.cost}</span>
+                                        <span>⭐ ${activity.rating}</span>
+                                    </div>
+                                </div>
+                            `);
+                        }
+                    });
+                });
+            }
+        }
+
+        // Enhanced modal functions with real data
+        function showWeatherModal() {
+            populateWeatherForecast(currentItinerary);
+            document.getElementById('weatherModal').style.display = 'flex';
+        }
+
+        function showCarbonModal() {
+            const carbonContent = `
+                <div class="carbon-summary">
+                    <div class="carbon-stat">
+                        <span class="carbon-number">${currentItinerary.carbonFootprint.total}</span>
+                        <span class="carbon-unit">kg CO₂</span>
+                        <span class="carbon-label">Total Emissions</span>
+                    </div>
+                    <div class="carbon-comparison">
+                        <p>🌍 That's 65% lower than average tourist trips!</p>
+                    </div>
+                </div>
+                <div class="carbon-breakdown">
+                    <h4>Breakdown by Category:</h4>
+                    <div class="breakdown-item">
+                        <span>🚗 Transport:</span>
+                        <span>${currentItinerary.carbonFootprint.breakdown.transport} kg CO₂</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>🏨 Accommodation:</span>
+                        <span>${currentItinerary.carbonFootprint.breakdown.accommodation} kg CO₂</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>🍽️ Food:</span>
+                        <span>${currentItinerary.carbonFootprint.breakdown.food} kg CO₂</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span>🎯 Activities:</span>
+                        <span>${currentItinerary.carbonFootprint.breakdown.activities} kg CO₂</span>
+                    </div>
+                </div>
+                <div class="eco-tips">
+                    <h4>🌱 Eco-Friendly Tips</h4>
+                    <ul>
+                        ${currentItinerary.carbonFootprint.ecoTips.map(tip => `<li>${tip}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            document.querySelector('#carbonModal .modal-body').innerHTML = carbonContent;
+            document.getElementById('carbonModal').style.display = 'flex';
+        }
+
+        function showBudgetModal() {
+            const totalCost = currentItinerary.dailyItinerary.reduce((sum, day) => sum + day.totalCost, 0);
+            const budgetContent = `
+                <div class="budget-breakdown">
+                    <div class="budget-summary">
+                        <h4>Total Trip Cost: ₹${totalCost.toLocaleString('en-IN')}</h4>
+                        <p>Budget: ₹${currentItinerary.budget.toLocaleString('en-IN')} | Savings: ₹${(currentItinerary.budget - totalCost).toLocaleString('en-IN')}</p>
+                    </div>
+                    <div class="daily-breakdown">
+                        <h4>Daily Breakdown:</h4>
+                        ${currentItinerary.dailyItinerary.map(day => `
+                            <div class="day-budget">
+                                <span>Day ${day.day} - ${day.title}:</span>
+                                <span>₹${day.totalCost.toLocaleString('en-IN')}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="category-breakdown">
+                        <h4>Estimated Category Breakdown:</h4>
+                        <div class="budget-category">
+                            <span class="category-name">🏨 Accommodation</span>
+                            <span class="category-amount">₹${Math.round(totalCost * 0.4).toLocaleString('en-IN')} (40%)</span>
+                        </div>
+                        <div class="budget-category">
+                            <span class="category-name">🍽️ Food & Dining</span>
+                            <span class="category-amount">₹${Math.round(totalCost * 0.3).toLocaleString('en-IN')} (30%)</span>
+                        </div>
+                        <div class="budget-category">
+                            <span class="category-name">🚗 Transportation</span>
+                            <span class="category-amount">₹${Math.round(totalCost * 0.2).toLocaleString('en-IN')} (20%)</span>
+                        </div>
+                        <div class="budget-category">
+                            <span class="category-name">🎯 Activities</span>
+                            <span class="category-amount">₹${Math.round(totalCost * 0.1).toLocaleString('en-IN')} (10%)</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.querySelector('#budgetModal .modal-body').innerHTML = budgetContent;
+            document.getElementById('budgetModal').style.display = 'flex';
+        }
+
+        function showEmergencyModal() {
+            document.getElementById('emergencyModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Modal controls
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+
+            // Control buttons
+            const expandBtn = document.getElementById('expandAll');
+            const collapseBtn = document.getElementById('collapseAll');
+            
+            if (expandBtn) {
+                expandBtn.addEventListener('click', () => {
+                    document.querySelectorAll('.timeline-item').forEach(item => {
+                        item.classList.add('expanded');
+                    });
+                });
+            }
+            
+            if (collapseBtn) {
+                collapseBtn.addEventListener('click', () => {
+                    document.querySelectorAll('.timeline-item').forEach(item => {
+                        item.classList.remove('expanded');
+                    });
+                });
+            }
+        }
+    </script>
+</body>
+</html>

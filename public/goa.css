@@ -1,0 +1,105 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #fdfdf7;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Banner */
+.banner {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(120deg, #0077b6, #90e0ef);
+  color: #fff;
+}
+.banner h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.3rem;
+}
+.banner p {
+  font-size: 1.2rem;
+}
+
+/* Hero Image */
+.hero img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Section Titles */
+section {
+  padding: 2rem 1.5rem;
+}
+h2 {
+  margin-bottom: 1rem;
+  color: #0077b6;
+}
+
+/* Overview */
+.overview {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Places Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 1rem;
+}
+.card {
+  background: #fff9f0;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ffdd9a;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+.card h3 {
+  margin-bottom: 0.5rem;
+  color: #0077b6;
+}
+
+/* Pros & Cons */
+.pros-cons .grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.pros, .cons {
+  flex: 1;
+  min-width: 250px;
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #ffdd9a;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.pros h3 { color: #2d6a4f; }
+.cons h3 { color: #d62828; }
+ul { list-style: circle inside; }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #0077b6;
+  color: #fff;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,435 @@
+/* styles.css */
+:root {
+  --max-width: 1100px;
+  --accent: #0e6b85;
+  --muted: #657786;
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  line-height: 1.6;
+  color: #222;
+  margin: 0;
+  background: #fff
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px
+}
+
+.site-header {
+  background: #f7fbfd;
+  border-bottom: 1px solid #eee
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.site-logo {
+  color: var(--accent);
+  margin: 0;
+  font-size: 28px
+}
+
+.main-nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: var(--muted)
+}
+
+.content h2 {
+  color: var(--accent);
+  font-size: 32px
+}
+
+.content p {
+  margin: 0 0 18px
+}
+
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0
+}
+
+.highlights li {
+  background: #f1f8fb;
+  padding: 10px 14px;
+  border-radius: 8px
+}
+
+.quick-overview {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 8px 16px
+}
+
+.seasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px
+}
+
+.season {
+  background: #fafafa;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #f0f0f0
+}
+
+.site-footer {
+  border-top: 1px solid #eee;
+  padding: 18px 0;
+  text-align: center;
+  color: var(--muted)
+}
+
+@media (max-width:720px) {
+  .container {
+    padding: 16px
+  }
+
+  .site-logo {
+    font-size: 22px
+  }
+
+  .content h2 {
+    font-size: 26px
+  }
+}
+
+/* Root Variables - inspired by Indian colors */
+:root {
+  --saffron: #ff9933;
+  --green: #138808;
+  --blue: #0e6b85;
+  --peacock: #2e3a87;
+  --white: #ffffff;
+  --muted: #444;
+  --bg: #faf9f6;
+  --max-width: 1100px;
+  --radius: 12px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Layout Containers */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Header */
+.site-header {
+  background: linear-gradient(90deg, var(--saffron), var(--green));
+  color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.main-nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover {
+  color: #ffe082;
+}
+
+/* Hero Section */
+.hero {
+  background: url('https://upload.wikimedia.org/wikipedia/commons/e/e5/Taj_Mahal_in_India_-_Kristian_Bertel.jpg') center/cover no-repeat;
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: auto;
+}
+
+.hero-content h2 {
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.btn {
+  background: var(--saffron);
+  color: var(--white);
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background: var(--green);
+  transform: translateY(-3px);
+}
+
+/* Section Headings */
+.content h2 {
+  color: var(--blue);
+  margin: 40px 0 16px;
+  font-size: 28px;
+  border-bottom: 3px solid var(--saffron);
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+/* Paragraphs */
+.content p {
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+/* Seasons Section */
+#seasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.season {
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--blue);
+}
+
+.summer {
+  background: linear-gradient(135deg, #ff9800, #ffb74d);
+}
+
+.monsoon {
+  background: linear-gradient(135deg, #2196f3, #64b5f6);
+}
+
+.winter {
+  background: linear-gradient(135deg, #4caf50, #81c784);
+}
+
+/* New Sections (Heritage, Festivals, Cuisine, Nature) */
+#heritage,
+#festivals,
+#cuisine,
+#nature {
+  margin-top: 40px;
+  padding: 24px;
+  background: var(--white);
+  border-left: 6px solid var(--saffron);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+#heritage h2,
+#festivals h2,
+#cuisine h2,
+#nature h2 {
+  color: var(--peacock);
+}
+
+#heritage p,
+#festivals p,
+#cuisine p,
+#nature p {
+  margin-bottom: 12px;
+}
+
+/* Icons inside sections */
+#heritage h2::before {
+  content: "🏰 ";
+}
+
+#festivals h2::before {
+  content: "🎉 ";
+}
+
+#cuisine h2::before {
+  content: "🍲 ";
+}
+
+#nature h2::before {
+  content: "🌿 ";
+}
+
+/* Footer */
+.site-footer {
+  background: var(--peacock);
+  color: var(--white);
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.site-footer p {
+  font-size: 14px;
+}
+
+/* Responsive */
+@media(max-width: 720px) {
+  .site-logo {
+    font-size: 22px;
+  }
+
+  .hero-content h2 {
+    font-size: 28px;
+  }
+
+  .hero {
+    height: 50vh;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #004466;
+  padding: 15px 30px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  /* clean, modern typeface */
+  font-weight: 600;
+  /* a bit bolder for readability */
+  letter-spacing: 0.5px;
+  /* subtle spacing for elegance */
+  padding: 8px 14px;
+  display: inline-block;
+  border-radius: 6px;
+  transition: color 0.25s, background 0.25s;
+}
+
+.nav-links li a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  /* gentle hover background */
+  color: #ffeb3b;
+  /* optional accent hover color */
+}
+
+.sos-button {
+  background: red;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.sos-button:hover {
+  background: darkred;
+}
+
+/* Hero Section */
+.hero {
+  color: rgb(202, 119, 10);
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-brand .logo {
+  height: 40px; /* Fixed height for the logo */
+  width: auto;
+  margin-right: 8px;
+}
+
+.navbar-brand span {
+  color: white;
+}
+
+.navbar {
+  height: 70px; /* Fixed height for navbar */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #004466;
+  padding: 0 30px;
+}

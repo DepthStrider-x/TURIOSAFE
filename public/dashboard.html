@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girl Safety Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">🛡️ Girl Safety Dashboard</div>
+            <button class="back-btn" onclick="goHome()">🏠 Back to Home</button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="dashboard-grid">
+            <!-- Live Location Sharing -->
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="icon">📍</span>
+                    Live Location Sharing
+                </h2>
+                <div id="locationStatus" class="status inactive">Location sharing inactive</div>
+                <button id="startLocationBtn" class="primary-btn" onclick="startLiveLocation()">
+                    Start 30-min Live Location
+                </button>
+                <div id="shareLink" class="share-link">
+                    <strong>Share this link:</strong><br>
+                    <span id="shareLinkText"></span>
+                    <button class="secondary-btn" onclick="copyShareLink()">Copy Link</button>
+                </div>
+                <div id="locationTimer" class="timer"></div>
+            </div>
+
+            <!-- Safe Washrooms Map -->
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="icon">🚻</span>
+                    Safe Washrooms Map
+                </h2>
+                <div id="washroomMap" class="map-container"></div>
+                <button class="secondary-btn" onclick="addWashroom()">Add Safe Washroom</button>
+                <button class="secondary-btn" onclick="findNearbyWashrooms()">Find Nearby</button>
+            </div>
+
+            <!-- Silent SOS -->
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="icon">🆘</span>
+                    Silent SOS
+                </h2>
+                <p style="margin-bottom: 1rem; color: #666;">
+                    Instantly send your location to emergency contacts
+                </p>
+                <button class="danger-btn" onclick="sendSilentSOS()">
+                    🚨 Send Silent SOS
+                </button>
+                <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                    <strong>Emergency Contacts:</strong><br>
+                    • Police: 100<br>
+                    • Women Helpline: 1091<br>
+                    • Emergency: 112
+                </div>
+            </div>
+
+            <!-- Report Unsafe Spot -->
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="icon">⚠️</span>
+                    Report Unsafe Spot
+                </h2>
+                <form id="reportForm" onsubmit="submitReport(event)">
+                    <div class="form-group">
+                        <label class="form-label">Location</label>
+                        <input type="text" id="reportLocation" class="form-input" placeholder="Auto-filled from GPS"
+                            readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea id="reportDescription" class="form-input form-textarea"
+                            placeholder="Describe the unsafe condition..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Photo (Optional)</label>
+                        <input type="file" id="reportPhoto" class="form-input" accept="image/*">
+                    </div>
+                    <button type="submit" class="primary-btn">Submit Report</button>
+                </form>
+            </div>
+
+            <!-- Nearest Safe Spots -->
+            <div class="card">
+                <h2 class="card-title">
+                    <span class="icon">🏥</span>
+                    Nearest Safe Spots
+                </h2>
+                <div style="margin-bottom: 1rem;">
+                    <button class="secondary-btn" onclick="findSafeSpots('police')">Police Stations</button>
+                    <button class="secondary-btn" onclick="findSafeSpots('hospital')">Hospitals</button>
+                    <button class="secondary-btn" onclick="findSafeSpots('pharmacy')">24/7 Pharmacies</button>
+                    <button class="secondary-btn" onclick="findSafeSpots('cafe')">Women-Friendly Cafes</button>
+                </div>
+                <div id="safeSpotsLoading" class="spinner hidden"></div>
+                <div id="safeSpotsList" class="spots-list"></div>
+            </div>
+        </div>
+
+        <!-- Privacy Notice -->
+        <div class="privacy-notice">
+            <strong>🔒 Privacy Notice:</strong> Your location data is only stored temporarily and automatically deleted
+            after 30 minutes.
+            We prioritize your privacy and safety. Location sharing can be stopped at any time.
+        </div>
+    </main>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <!-- Leaflet Map -->
+    <script src="dashboard.js"></script>
+
+
+</body>
+
+</html>

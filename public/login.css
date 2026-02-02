@@ -1,0 +1,298 @@
+/* style.css - animated background + glass card styling for the updated form */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+:root{
+  --accent: #ff3366;
+  --accent-2: #23d5ab;
+  --glass-bg: rgba(0,0,0,0.45);
+  --glass-border: rgba(255,255,255,0.06);
+}
+
+html,body { height:100%; }
+
+body{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background: linear-gradient(120deg, #0f1724 0%, #2a1b3a 30%, #2b0b2b 60%, #0b1020 100%);
+  background-size: 400% 400%;
+  animation: gradient 16s ease infinite;
+  color: #fff;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* animated subtle overlay pattern with moving radial gradient for the aurora-like effect */
+body::before{
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(600px 300px at 10% 20%, rgba(255,80,120,0.08), transparent 15%),
+    radial-gradient(500px 300px at 80% 70%, rgba(35,213,171,0.06), transparent 12%),
+    linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.6));
+  pointer-events:none;
+  mix-blend-mode: screen;
+  animation: drift 20s linear infinite;
+}
+
+/* keyframes */
+@keyframes gradient {
+  0% { background-position: 0% 50%;}
+  50% { background-position: 100% 50%;}
+  100% { background-position: 0% 50%;}
+}
+@keyframes drift {
+  0% { transform: translateY(0) scale(1); opacity:0.95; }
+  50% { transform: translateY(-20px) scale(1.02); opacity:1; }
+  100% { transform: translateY(0) scale(1); opacity:0.95; }
+}
+
+/* Navbar */
+.navbar{
+  position:fixed;
+  left:0; right:0; top:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 48px;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(8px);
+  z-index: 20;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.logo { font-weight:600; font-size:18px; display:flex; gap:8px; align-items:center; }
+.nav-links { list-style:none; display:flex; gap:18px; align-items:center; }
+.nav-links a { text-decoration:none; color: #fff; opacity:0.9; font-size:14px; }
+.search-box { display:flex; gap:8px; align-items:center; padding:6px 10px; border-radius:18px; background: rgba(255,255,255,0.04); }
+.search-box input{ background:transparent; border:none; color:#fff; outline:none; width:120px; }
+
+/* Main container */
+.container{
+  display:flex;
+  gap:48px;
+  align-items:center;
+  justify-content:space-between;
+  padding:120px 80px 60px;
+  width:100%;
+}
+
+/* Left content */
+.content{ max-width:520px; }
+.brand{ display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+.brand-logo{ width:46px; height:46px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+.brand-name{ font-weight:600; font-size:18px; color:#fff; letter-spacing:0.2px; }
+.content h2{ font-size:42px; letter-spacing:-0.6px; margin-bottom:6px; }
+.content h3{ font-size:18px; font-weight:400; color:rgba(255,255,255,0.92); margin-bottom:14px; }
+.content p{ color:rgba(255,255,255,0.75); line-height:1.5; margin-bottom:18px; }
+.socials a{ margin-right:12px; text-decoration:none; font-size:18px; color:#fff; opacity:0.9; }
+
+/* Login box (glass) */
+.login-box{
+  width:380px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius:12px;
+  padding:28px;
+  box-shadow: 0 16px 50px rgba(0,0,0,0.6);
+  backdrop-filter: blur(14px) saturate(120%);
+}
+
+/* form heading */
+.login-box h2{ text-align:center; margin-bottom:10px; font-size:22px; }
+
+/* input style */
+.input-box{
+  position:relative;
+  margin-bottom:16px;
+}
+.input-box input,
+.input-box select,
+.input-box textarea{
+  width:100%;
+  background:transparent;
+  border:none;
+  border-bottom:2px solid rgba(255,255,255,0.12);
+  padding:10px 36px 10px 10px;
+  color:#fff;
+  font-size:14px;
+  outline:none;
+  resize: vertical;
+}
+.input-box select { -webkit-appearance:none; appearance:none; padding-right:36px; }
+.input-box textarea{ padding-top:10px; padding-bottom:10px; }
+
+/* floating labels */
+.input-box label{
+  position:absolute;
+  left:8px;
+  top:50%;
+  transform:translateY(-50%);
+  color:rgba(255,255,255,0.55);
+  pointer-events:none;
+  transition: all .18s ease;
+  font-size:14px;
+}
+.input-box input:focus ~ label,
+.input-box input:not(:placeholder-shown) ~ label,
+.input-box textarea:focus ~ label,
+.input-box textarea:not(:placeholder-shown) ~ label,
+.input-box select:focus ~ label,
+.input-box select:not([value=""]) ~ label
+{
+  top:-10px;
+  font-size:12px;
+  color: var(--accent);
+}
+
+/* icon on right */
+.input-box i{
+  position:absolute;
+  right:8px;
+  top:12px;
+  color:rgba(255,255,255,0.45);
+  font-size:14px;
+}
+
+/* special textarea spacing for icon */
+.textarea-box textarea{ padding-right:36px; }
+
+/* options row */
+.options{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:8px 0 16px 0;
+  font-size:13px;
+  color:rgba(255,255,255,0.85);
+}
+.options .remember input{ margin-right:8px; transform:translateY(1px); }
+
+/* button */
+.btn{
+  width:100%;
+  padding:11px 14px;
+  border:none;
+  border-radius:8px;
+  background: linear-gradient(90deg, var(--accent), #cc2755);
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow: 0 8px 20px rgba(255,50,100,0.08);
+}
+.btn:hover{ transform: translateY(-2px); transition: all .18s ease; }
+
+/* small texts */
+.signup{ text-align:center; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.85); }
+.signup a{ color:var(--accent-2); text-decoration:none; }
+
+/* make placeholders invisible (so label visible) */
+input::placeholder, textarea::placeholder { color: transparent; }
+
+/* Responsive adjustments */
+@media (max-width: 900px){
+  .container{ flex-direction:column; padding:120px 28px 40px; gap:28px; align-items:flex-start; }
+  .login-box{ width:100%; }
+  .nav-links{ display:none; }
+  .search-box input{ width:80px; }
+}
+/* Reset & font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+*{margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif;}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size:400% 400%;
+  animation: gradient 15s ease infinite;
+  color:#fff;
+}
+
+@keyframes gradient {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Login box */
+.container{
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+.login-box{
+  width:350px;
+  padding:30px;
+  border-radius:12px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+.login-box h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.login-box{
+  width: 500px;              /* ⬅ increase from 350px to 500px */
+  padding: 40px;             /* more padding for breathing space */
+  border-radius: 14px;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: white; /* keep it consistent with navbar */
+  text-decoration: none;
+}
+
+.navbar-brand .logo {
+  height: 35px;   /* adjust as needed */
+  width: auto;
+  margin-right: 8px; /* spacing between logo & text */
+}
+
+.navbar-brand span {
+  color: white; /* make sure text color matches navbar */
+}
+
+.navbar {
+  height: 60px; /* fixed height for navbar */
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand .logo {
+  height: 100%;       /* logo takes full navbar height */
+  max-height: 50px;   /* prevent it from becoming too big */
+  width: auto;
+  margin-right: 8px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  margin-left: 0; /* remove any extra left space */
+  padding-left: 0; /* extra safeguard */
+}
+
+.navbar-brand .logo {
+  height: 100%;
+  max-height: 50px;
+  width: auto;
+  margin-right: 4px; /* reduce gap between logo & text */
+}
+
+.navbar-brand span {
+  margin-left: 0; /* reset if there was default spacing */
+}
