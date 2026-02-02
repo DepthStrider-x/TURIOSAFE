@@ -74,6 +74,15 @@ Personalized      Weighted Search       Interactive UI     Secure Logging
 - **Incident Persistence** – Upload proofs (images/documents) using `multer` integration.
 - **Emergency SOS** – Real-time coordinate capture and authorities notification.
 
+### 🛡️ Women Safety Dashboard (Integrated Core)
+A specialized, high-security dashboard (`dashboard.html`) designed for immediate protection and situational awareness.
+- 📍 **Live Location Sharing** – Encrypted 30-minute location broadcasting with shareable links.
+- 🚻 **Safe Washrooms Map** – Crowd-sourced and verified directory of women-friendly facilities.
+- 🆘 **Silent SOS** – Discrete emergency activation notifying Police (100) and Women Helpline (1091).
+- ⚠️ **Unsafe Spot Reporting** – Geotagged incident logging with multimedia attachment support.
+- 🏥 **Safe Spot Finder** – Real-time proximity search for Hospitals, 24/7 Pharmacies, and Safe Cafes.
+- 🔒 **Privacy-First Design** – Automatic data purging 30 minutes after session termination.
+
 � **Data & Sustainability**
 - **Eco-Analytics** – Calculates environmental impact and tree-planting equivalents.
 - **Dynamic Itineraries** – Real-time adjustment of schedules based on user interests.
